@@ -1,0 +1,17 @@
+if [ -z $1 ]; then
+	echo "Please provide version";
+	return;
+fi
+
+dotnet.exe clean
+dotnet.exe build --configuration Release
+dotnet.exe pack --configuration Release
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.Data.Sqlite.Core.$1.nupkg
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.Data.Sqlite.$1.nupkg
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.EntityFrameworkCore.Relational.$1.nupkg
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.EntityFrameworkCore.Design.$1.nupkg
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.EntityFrameworkCore.$1.nupkg
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.EntityFrameworkCore.Abstractions.$1.nupkg
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.EntityFrameworkCore.Analyzers.$1.nupkg
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.EntityFrameworkCore.Sqlite.Core.$1.nupkg
+dotnet.exe nuget push --source "Marketingfabrik" --api-key az --interactive artifacts/packages/Release/Shipping/Microsoft.EntityFrameworkCore.Sqlite.$1.nupkg
